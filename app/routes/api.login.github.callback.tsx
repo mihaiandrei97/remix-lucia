@@ -90,7 +90,7 @@ export async function loader({request}: LoaderFunctionArgs) {
         `Bearer ${githubAccessToken}`
     );
     const emailListResponse = await fetch(emailListRequest);
-    const emailListResult: GithubEmails = await emailListResponse.json();
+    const emailListResult: GithubEmails[] = await emailListResponse.json();
 
     if (!Array.isArray(emailListResult) || emailListResult.length < 1) {
         return new Response("Please restart the process.", {
